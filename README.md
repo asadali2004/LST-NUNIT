@@ -13,15 +13,17 @@ NUnitDemo/
 ├── NUnitDemo.Core/             ← Production Code
 │   ├── Class1.cs              ← Calculator class (Add, Divide methods)
 │   ├── BankAccount.cs         ← BankAccount class (Deposit, Withdraw, etc)
+│   ├── CollageService.cs      ← CollageService class (GetWelcomeNote, GetFareWellNote)
+│   ├── ICollageService.cs     ← ICollageService interface
+│   ├── Student.cs             ← Student class (Name property)
 │   ├── NUnitDemo.Core.csproj
-│   ├── bin/
-│   └── obj/
+│   
 │
 ├── NUnitDemo.Tests/            ← Test Code (NUnit Tests)
 │   ├── UnitTest1.cs           ← CalculatorTests & BankAccountTests
+│   ├── BankAccountTests.cs    ← BankAccount unit tests
+│   ├── CollageServiceTest.cs  ← CollageService tests with Moq
 │   ├── NUnitDemo.Tests.csproj
-│   ├── bin/
-│   └── obj/
 │
 ├── README.md                   ← This file
 └── NOTES/                      ← Documentation (guides)
@@ -74,6 +76,22 @@ Look for output showing:
 
 ---
 
+### **CollageService Class**
+
+**File:** `CollageService.cs` and `ICollageService.cs`
+- **Interface:** `ICollageService`
+- **Class:** `CollageService`
+- **Methods:**
+  - `GetWelcomeNote(string name)` → Returns welcome message
+  - `GetFareWellNote(string name)` → Returns farewell message
+
+**File:** `Student.cs`
+- **Class:** `Student`
+- **Properties:**
+  - `Name` (string) → Student name
+
+---
+
 ### **NUnitDemo.Tests/** (Test Code)
 
 **File:** `UnitTest1.cs`
@@ -94,6 +112,10 @@ Look for output showing:
 - `Withdraw_WithValidAmount_DecreasesBalance()` - Tests withdrawal functionality
 - `Withdraw_WithInsufficientFunds_ThrowsException()` - Tests exception on insufficient balance
 - `Deposit_MultipleAmounts_UpdatesBalance()` - Parameterized test with 3 test cases
+
+**CollageServiceTests (with Moq):**
+- `GetWelcomeNote_Using_Mock()` - Demonstrates mocking with Moq framework
+- `GetFareWellNote_Using_Mock()` - Tests with mock objects
 
 ---
 
@@ -159,6 +181,8 @@ This demo project teaches you:
 ✅ Testing business logic (BankAccount class)
 ✅ Testing constructor validation
 ✅ Testing multiple test classes
+✅ Mocking dependencies with Moq
+✅ Interface-based design and testing
 ✅ Best practices for organizing tests
 ✅ Understanding the Arrange-Act-Assert (AAA) pattern
 
@@ -202,7 +226,13 @@ dotnet test --no-build
 |------|------|---------|
 | `NUnitDemo.slnx` | Solution | Solution file linking projects |
 | `NUnitDemo.Core/Class1.cs` | Production | Calculator class with Add/Divide |
-| `NUnitDemo.Tests/UnitTest1.cs` | Test | Test cases for Calculator |
+| `NUnitDemo.Core/BankAccount.cs` | Production | BankAccount class with Deposit/Withdraw |
+| `NUnitDemo.Core/CollageService.cs` | Production | CollageService implementation |
+| `NUnitDemo.Core/ICollageService.cs` | Interface | CollageService interface |
+| `NUnitDemo.Core/Student.cs` | Model | Student data model |
+| `NUnitDemo.Tests/UnitTest1.cs` | Test | Calculator and BankAccount tests |
+| `NUnitDemo.Tests/BankAccountTests.cs` | Test | BankAccount unit tests |
+| `NUnitDemo.Tests/CollageServiceTest.cs` | Test | Moq mocking demonstration |
 | `README.md` | Documentation | This file |
 
 ---
@@ -215,6 +245,8 @@ dotnet test --no-build
 - ✅ Exception handling in tests
 - ✅ Test organization
 - ✅ SetUp method for initialization
+- ✅ Mocking with Moq framework
+- ✅ Interface-based testing
 - ✅ Clean, simple code examples
 
 ---
