@@ -14,7 +14,7 @@ public class BankAccountTests
         _account = new BankAccount(1000);
     }
 
-    // 1️⃣ Constructor Exception
+    // Constructor Exception
     [Test]
     public void Constructor_NegativeBalance_ThrowsException()
     {
@@ -24,7 +24,7 @@ public class BankAccountTests
         });
     }
 
-    // 2️⃣ Deposit Exceptions
+    // Deposit Exceptions
     [Test]
     public void Deposit_ZeroAmount_ThrowsException()
     {
@@ -43,7 +43,7 @@ public class BankAccountTests
         });
     }
 
-    // 3️⃣ Withdraw Exceptions
+    //  Withdraw Exceptions
     [Test]
     public void Withdraw_ZeroAmount_ThrowsException()
     {
@@ -62,7 +62,7 @@ public class BankAccountTests
         });
     }
 
-    // 4️⃣ Happy Path (No Exception)
+    //  Happy Path (No Exception)
     [Test]
     public void Withdraw_ValidAmount_UpdatesBalance()
     {
