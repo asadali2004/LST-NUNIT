@@ -1,0 +1,11 @@
+E:\DotNet_Learning\C#_Practice_Projects\NUnitDemo\NUnitDemo.Core\bin\Debug\net10.0\NUnitDemo.Core.deps.json
+E:\DotNet_Learning\C#_Practice_Projects\NUnitDemo\NUnitDemo.Core\bin\Debug\net10.0\NUnitDemo.Core.dll
+E:\DotNet_Learning\C#_Practice_Projects\NUnitDemo\NUnitDemo.Core\bin\Debug\net10.0\NUnitDemo.Core.pdb
+E:\DotNet_Learning\C#_Practice_Projects\NUnitDemo\NUnitDemo.Core\obj\Debug\net10.0\NUnitDemo.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\DotNet_Learning\C#_Practice_Projects\NUnitDemo\NUnitDemo.Core\obj\Debug\net10.0\NUnitDemo.Core.AssemblyInfoInputs.cache
+E:\DotNet_Learning\C#_Practice_Projects\NUnitDemo\NUnitDemo.Core\obj\Debug\net10.0\NUnitDemo.Core.AssemblyInfo.cs
+E:\DotNet_Learning\C#_Practice_Projects\NUnitDemo\NUnitDemo.Core\obj\Debug\net10.0\NUnitDemo.Core.csproj.CoreCompileInputs.cache
+E:\DotNet_Learning\C#_Practice_Projects\NUnitDemo\NUnitDemo.Core\obj\Debug\net10.0\NUnitDemo.Core.dll
+E:\DotNet_Learning\C#_Practice_Projects\NUnitDemo\NUnitDemo.Core\obj\Debug\net10.0\refint\NUnitDemo.Core.dll
+E:\DotNet_Learning\C#_Practice_Projects\NUnitDemo\NUnitDemo.Core\obj\Debug\net10.0\NUnitDemo.Core.pdb
+E:\DotNet_Learning\C#_Practice_Projects\NUnitDemo\NUnitDemo.Core\obj\Debug\net10.0\ref\NUnitDemo.Core.dll
