@@ -12,12 +12,13 @@ NUnitDemo/
 │
 ├── NUnitDemo.Core/             ← Production Code
 │   ├── Class1.cs              ← Calculator class (Add, Divide methods)
+│   ├── BankAccount.cs         ← BankAccount class (Deposit, Withdraw, etc)
 │   ├── NUnitDemo.Core.csproj
 │   ├── bin/
 │   └── obj/
 │
 ├── NUnitDemo.Tests/            ← Test Code (NUnit Tests)
-│   ├── UnitTest1.cs           ← CalculatorTests class
+│   ├── UnitTest1.cs           ← CalculatorTests & BankAccountTests
 │   ├── NUnitDemo.Tests.csproj
 │   ├── bin/
 │   └── obj/
@@ -59,65 +60,40 @@ Look for output showing:
   - `Divide(int a, int b)` → Returns division result
     - Throws `ArgumentException` if b == 0
 
-```csharp
-public class Calculator
-{
-    public int Add(int a, int b) => a + b;
+---
 
-    public int Divide(int a, int b)
-    {
-        if (b == 0)
-            throw new ArgumentException("Cannot divide by zero", nameof(b));
-        return a / b;
-    }
-}
-```
+### **BankAccount Class**
+
+**File:** `BankAccount.cs`
+- **Class:** `BankAccount`
+- **Properties:**
+  - `Balance` (decimal) → Current account balance
+- **Methods:**
+  - `Deposit(decimal amount)` → Adds money (throws exception if ≤ 0)
+  - `Withdraw(decimal amount)` → Removes money (throws if amount ≤ 0 or insufficient funds)
 
 ---
 
 ### **NUnitDemo.Tests/** (Test Code)
 
 **File:** `UnitTest1.cs`
-- **Test Class:** `CalculatorTests`
-- **Test Methods:**
+- **Test Class 1:** `CalculatorTests` - Tests for Calculator class
+- **Test Class 2:** `BankAccountTests` - Tests for BankAccount class
 
-#### 1. `All_Assertion_Examples()` - Demonstrates all assertion types
-```csharp
-// 1. Equality Assertions
-Assert.That(result, Is.EqualTo(expected));
-Assert.That(result, Is.Not.EqualTo(wrong));
+#### Test Methods
 
-// 2. Numeric Comparisons
-Assert.That(value, Is.GreaterThan(5));
-Assert.That(value, Is.LessThan(100));
-Assert.That(value, Is.InRange(1, 100));
+**CalculatorTests:**
+- `All_Assertion_Examples()` - Demonstrates 6 types of assertions
+- `Add_MultipleInputs_ReturnsExpected()` - Parameterized test with 3 test cases
 
-// 3. Boolean & Nulls
-Assert.That(true, Is.True);
-Assert.That(null, Is.Null);
-
-// 4. String Assertions
-Assert.That(msg, Does.Contain("text"));
-Assert.That(msg, Does.StartWith("Hello"));
-
-// 5. Collection Assertions
-Assert.That(list, Has.Count.EqualTo(3));
-Assert.That(list, Has.Member(item));
-
-// 6. Exception Assertions
-Assert.Throws<ArgumentException>(() => method());
-```
-
-#### 2. `Add_MultipleInputs_ReturnsExpected()` - Parameterized test
-```csharp
-[TestCase(1, 2, 3)]      // Runs with these values
-[TestCase(-1, 1, 0)]     // Runs with these values
-[TestCase(100, 200, 300)]  // Runs with these values
-public void Add_MultipleInputs_ReturnsExpected(int a, int b, int expected)
-{
-    Assert.That(_calc.Add(a, b), Is.EqualTo(expected));
-}
-```
+**BankAccountTests:**
+- `Constructor_WithPositiveBalance_SetsBalance()` - Validates balance initialization
+- `Constructor_WithNegativeBalance_ThrowsException()` - Validates constructor validation
+- `Deposit_WithPositiveAmount_IncreasesBalance()` - Tests deposit functionality
+- `Deposit_WithZeroAmount_ThrowsException()` - Tests exception on invalid amount
+- `Withdraw_WithValidAmount_DecreasesBalance()` - Tests withdrawal functionality
+- `Withdraw_WithInsufficientFunds_ThrowsException()` - Tests exception on insufficient balance
+- `Deposit_MultipleAmounts_UpdatesBalance()` - Parameterized test with 3 test cases
 
 ---
 
@@ -147,13 +123,25 @@ public void Add_MultipleInputs_ReturnsExpected(int a, int b, int expected)
 When you run `dotnet test`, you should see:
 
 ```
-Passed!  - Failed:  0, Passed:  8, Skipped:  0
+Passed!  - Failed:  0, Passed:  12, Skipped:  0
 
-Tests:
+CalculatorTests:
   ✓ All_Assertion_Examples
   ✓ Add_MultipleInputs_ReturnsExpected(1, 2, 3)
   ✓ Add_MultipleInputs_ReturnsExpected(-1, 1, 0)
   ✓ Add_MultipleInputs_ReturnsExpected(100, 200, 300)
+
+BankAccountTests:
+  ✓ Constructor_WithPositiveBalance_SetsBalance
+  ✓ Constructor_WithNegativeBalance_ThrowsException
+  ✓ Deposit_WithPositiveAmount_IncreasesBalance
+  ✓ Deposit_WithZeroAmount_ThrowsException
+  ✓ Withdraw_WithValidAmount_DecreasesBalance
+  ✓ Withdraw_WithInsufficientFunds_ThrowsException
+  ✓ GetAccountStatus_WithVariousBalances_ReturnsCorrectStatus(1500, "Premium")
+  ✓ GetAccountStatus_WithVariousBalances_ReturnsCorrectStatus(750, "Standard")
+  ✓ GetAccountStatus_WithVariousBalances_ReturnsCorrectStatus(100, "Basic")
+  ✓ GetAccountStatus_WithVariousBalances_ReturnsCorrectStatus(0, "Empty")
 ```
 
 ---
@@ -164,10 +152,13 @@ This demo project teaches you:
 
 ✅ How to set up NUnit projects
 ✅ Writing your first unit test
-✅ Using test attributes ([TestFixture], [SetUp], [Test])
+✅ Using test attributes ([TestFixture], [SetUp], [Test], [TestCase])
 ✅ Writing assertions (Assert.That)
 ✅ Parameterized testing with [TestCase]
-✅ Exception testing
+✅ Exception testing (Assert.Throws<T>)
+✅ Testing business logic (BankAccount class)
+✅ Testing constructor validation
+✅ Testing multiple test classes
 ✅ Best practices for organizing tests
 ✅ Understanding the Arrange-Act-Assert (AAA) pattern
 
