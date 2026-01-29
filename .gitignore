@@ -1,0 +1,41 @@
+# Build results
+bin/
+obj/
+Debug/
+Release/
+
+# User-specific files
+*.user
+*.suo
+*.userprefs
+*.sln.iml
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Build artifacts
+*.dll
+*.exe
+*.pdb
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+*.logs
+
+# Local environment variables
+.env
+.env.local
